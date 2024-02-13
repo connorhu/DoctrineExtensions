@@ -4,7 +4,7 @@ namespace DoctrineExtensions\Tests\Query\Postgresql;
 
 use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
-class Age extends PostgresqlTestCase
+class AgeTest extends PostgresqlTestCase
 {
     public function testAge(): void
     {

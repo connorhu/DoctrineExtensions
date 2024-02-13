@@ -15,10 +15,10 @@ class Age extends FunctionNode
 
     public function getSql(SqlWalker $sqlWalker)
     {
-        return 'AGE('.$this->date1->dispatch($sqlWalker).', '.$this->date2->dispatch($sqlWalker).')';
+        return 'AGE(' . $this->date1->dispatch($sqlWalker) . ', ' . $this->date2->dispatch($sqlWalker) . ')';
     }
 
-    public function parse(Parser $parser)
+    public function parse(Parser $parser): void
     {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

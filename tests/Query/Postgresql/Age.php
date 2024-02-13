@@ -6,7 +6,7 @@ use DoctrineExtensions\Tests\Query\PostgresqlTestCase;
 
 class Age extends PostgresqlTestCase
 {
-    public function testAge()
+    public function testAge(): void
     {
         $this->assertDqlProducesSql(
             "SELECT age('2012-03-05', '2010-04-01') from DoctrineExtensions\Tests\Entities\Blank b",

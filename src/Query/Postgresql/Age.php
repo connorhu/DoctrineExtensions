@@ -12,13 +12,13 @@ use Doctrine\ORM\Query\TokenType;
  */
 class Age extends FunctionNode
 {
-    public $date1 = null;
+    private $arithmeticPrimary1 = null;
 
-    public $date2 = null;
+    private $arithmeticPrimary2 = null;
 
     public function getSql(SqlWalker $sqlWalker)
     {
-        return 'AGE(' . $this->date1->dispatch($sqlWalker) . ', ' . $this->date2->dispatch($sqlWalker) . ')';
+        return 'AGE(' . $this->arithmeticPrimary1->dispatch($sqlWalker) . ', ' . $this->arithmeticPrimary2->dispatch($sqlWalker) . ')';
     }
 
     public function parse(Parser $parser): void
@@ -26,9 +26,9 @@ class Age extends FunctionNode
         $parser->match(TokenType::T_IDENTIFIER);
         $parser->match(TokenType::T_OPEN_PARENTHESIS);
 
-        $this->date1 = $parser->ArithmeticPrimary();
+        $this->arithmeticPrimary1 = $parser->ArithmeticPrimary();
         $parser->match(TokenType::T_COMMA);
-        $this->date2 = $parser->ArithmeticPrimary();
+        $this->arithmeticPrimary2 = $parser->ArithmeticPrimary();
 
         $parser->match(TokenType::T_CLOSE_PARENTHESIS);
     }
